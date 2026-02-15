@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill'n Shakers Food Carts and Catering Services</title>
+    <link rel="stylesheet" href="design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Chill'n Shakers</h1>
+                <span class="tagline">Food Carts & Catering</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#offers">Our Offers</a>
+                <a href="#inquiry">Inquiries</a>
+                <button class="btn-reservation" onclick="openReservationModal()">
+                    <i class="fas fa-calendar-alt"></i> Reservation
+                </button>
+                <button class="btn-login" onclick="openLoginModal()">
+                    <i class="fas fa-user"></i> Login
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="closeMobileMenu()">Home</a>
+        <a href="#offers" onclick="closeMobileMenu()">Our Offers</a>
+        <a href="#inquiry" onclick="closeMobileMenu()">Inquiries</a>
+        <button class="btn-reservation" onclick="openReservationModal(); closeMobileMenu();">
+            <i class="fas fa-calendar-alt"></i> Reservation
+        </button>
+        <button class="btn-login" onclick="openLoginModal(); closeMobileMenu();">
+            <i class="fas fa-user"></i> Login
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to Chill'n Shakers</h1>
+                <p class="hero-subtitle">Premium Food Carts & Catering Services</p>
+                <p class="hero-description">Delivering delicious meals and exceptional catering experiences for all your events and gatherings.</p>
+                <div class="hero-buttons">
+                    <a href="#offers" class="btn-primary">Explore Our Offers</a>
+                    <button class="btn-secondary" onclick="openReservationModal()">Make a Reservation</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Fresh & Delicious</h3>
+                    <p>Quality ingredients, unforgettable flavors</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Delivery Available</h3>
+                    <p>Bringing the feast to your doorstep</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>Event Catering</h3>
+                    <p>Making your occasions special</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Offers Section -->
+    <section id="offers" class="offers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What We Offer</h2>
+                <p>Discover our range of services designed to satisfy every craving</p>
+            </div>
+            
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Food Cart Services</h3>
+                    <p>Mobile food carts for events, festivals, corporate gatherings, and private parties. Our professional staff brings the kitchen to you.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Fully equipped food carts</li>
+                        <li><i class="fas fa-check"></i> Professional chefs on site</li>
+                        <li><i class="fas fa-check"></i> Customizable menu options</li>
+                        <li><i class="fas fa-check"></i> Flexible serving sizes</li>
+                    </ul>
+                    <span class="offer-price">Starting at $150/event</span>
+                </div>
+
+                <div class="offer-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="offer-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Catering Services</h3>
+                    <p>Full-service catering for weddings, birthdays, corporate events, and any special occasion. We handle everything from menu planning to cleanup.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Custom menu planning</li>
+                        <li><i class="fas fa-check"></i> Professional waitstaff</li>
+                        <li><i class="fas fa-check"></i> Complete event setup</li>
+                        <li><i class="fas fa-check"></i> Full cleanup service</li>
+                    </ul>
+                    <span class="offer-price">Starting at $500/event</span>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Special Events</h3>
+                    <p>From intimate gatherings to large celebrations, we bring culinary excellence to every event. Let us make your occasion unforgettable.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Themed menu options</li>
+                        <li><i class="fas fa-check"></i> Dietary accommodations</li>
+                        <li><i class="fas fa-check"></i> Interactive food stations</li>
+                        <li><i class="fas fa-check"></i> Signature dishes</li>
+                    </ul>
+                    <span class="offer-price">Custom Quote</span>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Meal Packages</h3>
+                    <p>Convenient meal packages for offices, schools, and groups. Balanced, delicious meals delivered to your location.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Weekly meal plans</li>
+                        <li><i class="fas fa-check"></i> Bulk ordering</li>
+                        <li><i class="fas fa-check"></i> Dietary options</li>
+                        <li><i class="fas fa-check"></i> Regular delivery</li>
+                    </ul>
+                    <span class="offer-price">Starting at $12/person</span>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Private Dining</h3>
+                    <p>Exclusive dining experiences for small groups. Personal chef service in the comfort of your home or venue.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Personalized menu</li>
+                        <li><i class="fas fa-check"></i> In-home service</li>
+                        <li><i class="fas fa-check"></i> Wine pairing</li>
+                        <li><i class="fas fa-check"></i> Intimate atmosphere</li>
+                    </ul>
+                    <span class="offer-price">Starting at $300/event</span>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Corporate Services</h3>
+                    <p>Professional catering solutions for business events, meetings, team building, and corporate celebrations.</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Business lunch packages</li>
+                        <li><i class="fas fa-check"></i> Conference catering</li>
+                        <li><i class="fas fa-check"></i> Team building events</li>
+                        <li><i class="fas fa-check"></i> Account billing</li>
+                    </ul>
+                    <span class="offer-price">Starting at $200/event</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Section -->
+    <section id="inquiry" class="inquiry-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Have questions? We'd love to hear from you!</p>
+            </div>
+            
+            <div class="inquiry-content">
+                <div class="inquiry-info">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>Serving all areas</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>info@chillnshakers.com</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Hours</h4>
+                        <p>Mon-Sun: 8AM - 8PM</p>
+                    </div>
+                </div>
+
+                <div class="inquiry-form-container">
+                    <form id="inquiryForm" class="inquiry-form">
+                        <div class="form-group">
+                            <label for="inquiryName">Full Name</label>
+                            <input type="text" id="inquiryName" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryEmail">Email Address</label>
+                            <input type="email" id="inquiryEmail" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryPhone">Phone Number</label>
+                            <input type="tel" id="inquiryPhone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryType">Inquiry Type</label>
+                            <select id="inquiryType" name="type" required>
+                                <option value="">Select an option</option>
+                                <option value="general">General Question</option>
+                                <option value="catering">Catering Request</option>
+                                <option value="food-cart">Food Cart Booking</option>
+                                <option value="pricing">Pricing Information</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryMessage">Message</label>
+                            <textarea id="inquiryMessage" name="message" rows="5" required placeholder="Tell us about your event or question..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Chill'n Shakers</h3>
+                    <p>Food Carts & Catering Services</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#offers">Our Offers</a>
+                    <a href="#inquiry">Contact Us</a>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <a href="#offers">Food Carts</a>
+                    <a href="#offers">Catering</a>
+                    <a href="#offers">Special Events</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@chillnshakers.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chill'n Shakers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login/Register Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <button class="btn-google" onclick="handleGoogleLogin()">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form" style="display: none;">
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" id="registerEmail" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required placeholder="Create a password" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirm">Confirm Password</label>
+                        <input type="password" id="registerConfirm" required placeholder="Confirm your password">
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <button class="btn-google" onclick="handleGoogleLogin()">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeReservationModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2><i class="fas fa-calendar-alt"></i> Make a Reservation</h2>
+                <p>Book our food cart or catering services for your event</p>
+            </div>
+
+            <div id="reservationAuthMessage" class="auth-required">
+                <i class="fas fa-lock"></i>
+                <p>Please <a href="#" onclick="openLoginModal(); closeReservationModal();">login</a> or <a href="#" onclick="openLoginModal(); switchTab('register'); closeReservationModal();">create an account</a> to make a reservation.</p>
+                <p class="small">This helps us save your reservation history and provide better service.</p>
+            </div>
+
+            <form id="reservationForm" class="reservation-form" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resName">Full Name</label>
+                        <input type="text" id="resName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="resEmail">Email Address</label>
+                        <input type="email" id="resEmail" required placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resPhone">Phone Number</label>
+                        <input type="tel" id="resPhone" required placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="resType">Service Type</label>
+                        <select id="resType" required>
+                            <option value="">Select service</option>
+                            <option value="food-cart">Food Cart</option>
+                            <option value="catering">Catering</option>
+                            <option value="special-event">Special Event</option>
+                            <option value="private-dining">Private Dining</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resDate">Event Date</label>
+                        <input type="date" id="resDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="resTime">Event Time</label>
+                        <input type="time" id="resTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resGuests">Number of Guests</label>
+                    <input type="number" id="resGuests" required min="1" placeholder="50">
+                </div>
+                <div class="form-group">
+                    <label for="resLocation">Event Location</label>
+                    <input type="text" id="resLocation" required placeholder="Address or venue name">
+                </div>
+                <div class="form-group">
+                    <label for="resDetails">Additional Details</label>
+                    <textarea id="resDetails" rows="4" placeholder="Tell us more about your event, menu preferences, or any special requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-check"></i> Submit Reservation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-badge">AI</span>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4><i class="fas fa-robot"></i> Chill'n AI Assistant</h4>
+                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>Hello! I'm Chill'n AI, your virtual assistant. I can help you with:</p>
+                        <ul>
+                            <li>Information about our services</li>
+                            <li>Pricing and packages</li>
+                            <li>Availability check</li>
+                            <li>General questions</li>
+                        </ul>
+                        <p>How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeypress(event)">
+                <button onclick="sendChatbotMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="chatbot-suggestions">
+                <button onclick="quickQuestion('What services do you offer?')">What services do you offer?</button>
+                <button onclick="quickQuestion('How much does catering cost?')">Pricing information</button>
+                <button onclick="quickQuestion('Do you deliver?')">Do you deliver?</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
