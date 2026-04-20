@@ -219,15 +219,15 @@
                     <form id="inquiryForm" class="inquiry-form">
                         <div class="form-group">
                             <label for="inquiryName">Full Name</label>
-                            <input type="text" id="inquiryName" name="name" required placeholder="John Doe">
+                            <input type="text" id="inquiryName" name="name" required placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="inquiryEmail">Email Address</label>
-                            <input type="email" id="inquiryEmail" name="email" required placeholder="john@example.com">
+                            <input type="email" id="inquiryEmail" name="email" required placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="inquiryPhone">Phone Number</label>
-                            <input type="tel" id="inquiryPhone" name="phone" placeholder="(555) 123-4567">
+                            <input type="tel" id="inquiryPhone" name="phone" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="inquiryType">Inquiry Type</label>
@@ -433,50 +433,6 @@
         </div>
     </div>
 
-    <!-- AI Chatbot -->
-    <div id="chatbot" class="chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()">
-            <i class="fas fa-comments"></i>
-            <span class="chatbot-badge">AI</span>
-        </button>
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                <h4><i class="fas fa-robot"></i> Chill'n AI Assistant</h4>
-                <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message bot-message">
-                    <div class="message-content">
-                        <p>Hello! I'm Chill'n AI, your virtual assistant. I can help you with:</p>
-                        <ul>
-                            <li>Information about our services</li>
-                            <li>Pricing and packages</li>
-                            <li>Availability check</li>
-                            <li>General questions</li>
-                        </ul>
-                        <p>How can I assist you today?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeypress(event)">
-                <button onclick="sendChatbotMessage()">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-            <div class="chatbot-suggestions">
-                <button onclick="quickQuestion('What services do you offer?')">What services do you offer?</button>
-                <button onclick="quickQuestion('How much does catering cost?')">Pricing information</button>
-                <button onclick="quickQuestion('Do you deliver?')">Do you deliver?</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="toast">
-        <span id="toastMessage"></span>
-    </div>
-
-    <script src="javascript.js"></script>
+ 
 </body>
 </html>
