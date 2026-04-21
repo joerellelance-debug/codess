@@ -1,4 +1,4 @@
-// Chill'n Shakers - JavaScript Functionality
+
 
 // User Session Management
 let currentUser = null;
@@ -65,6 +65,12 @@ function updateUIForLoggedInUser() {
         }
     }
     
+    // Show My Reservations button when logged in
+    const myReservationsBtn = document.getElementById('btnMyReservations');
+    if (myReservationsBtn) {
+        myReservationsBtn.style.display = 'inline-block';
+    }
+    
     // Update reservation form if logged in
     updateReservationFormForUser();
 }
@@ -122,6 +128,144 @@ function closeReservationModal() {
     const modal = document.getElementById('reservationModal');
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+}
+
+// My Reservations Modal Functions
+function openMyReservationsModal() {
+    const modal = document.getElementById('myReservationsModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Populate reservations
+    displayUserReservations();
+}
+
+function closeMyReservationsModal() {
+    const modal = document.getElementById('myReservationsModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function displayUserReservations() {
+    const contentDiv = document.getElementById('myReservationsContent');
+    
+    if (!currentUser) {
+        contentDiv.innerHTML = `
+            <div class="auth-required">
+                <i class="fas fa-lock"></i>
+                <p>Please <a href="#" onclick="closeMyReservationsModal(); openLoginModal();">login</a> to view your reservations.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Get user's reservations from localStorage
+    const allReservations = JSON.parse(localStorage.getItem('chillnshakers_reservations') || '[]');
+    const userReservations = allReservations.filter(res => res.email === currentUser.email);
+    
+    if (userReservations.length === 0) {
+        contentDiv.innerHTML = `
+            <div class="no-reservations">
+                <i class="fas fa-calendar-times"></i>
+                <h3>No Reservations Yet</h3>
+                <p>You haven't made any reservations yet.</p>
+                <button class="btn-primary" onclick="closeMyReservationsModal(); openReservationModal();">
+                    <i class="fas fa-calendar-plus"></i> Make a Reservation
+                </button>
+            </div>
+        `;
+        return;
+    }
+    
+    // Sort reservations by date (newest first)
+    userReservations.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    let reservationsHTML = '<div class="reservations-list">';
+    
+    userReservations.forEach(res => {
+        const serviceTypeLabels = {
+            'food-cart': 'Food Cart',
+            'catering': 'Catering',
+            'special-event': 'Special Event',
+            'private-dining': 'Private Dining'
+        };
+        
+        const statusClass = res.status === 'confirmed' ? 'status-confirmed' : 'status-pending';
+        const statusLabel = res.status === 'confirmed' ? 'Confirmed' : 'Pending';
+        
+        // Format date
+        const dateObj = new Date(res.date);
+        const formattedDate = dateObj.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        // Format time
+        const timeObj = new Date(`2000-01-01T${res.time}`);
+        const formattedTime = timeObj.toLocaleTimeString('en-US', { 
+            hour: 'numeric', 
+            minute: '2-digit',
+            hour12: true 
+        });
+        
+        reservationsHTML += `
+            <div class="reservation-card">
+                <div class="reservation-header">
+                    <div class="reservation-service">
+                        <i class="fas fa-utensils"></i>
+                        <span>${serviceTypeLabels[res.serviceType] || res.serviceType}</span>
+                    </div>
+                    <span class="reservation-status ${statusClass}">${statusLabel}</span>
+                </div>
+                <div class="reservation-details">
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <label>Where</label>
+                                <span>${res.location}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <label>When</label>
+                                <span>${formattedDate} at ${formattedTime}</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <label>Guests</label>
+                                <span>${res.guests} guests</span>
+                            </div>
+                        </div>
+                    </div>
+                    ${res.details ? `
+                    <div class="detail-row">
+                        <div class="detail-item full-width">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <label>Additional Details</label>
+                                <span>${res.details}</span>
+                            </div>
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+                <div class="reservation-footer">
+                    <span class="reservation-id">Booking ID: #${res.id}</span>
+                </div>
+            </div>
+        `;
+    });
+    
+    reservationsHTML += '</div>';
+    contentDiv.innerHTML = reservationsHTML;
 }
 
 // Tab switching
@@ -365,11 +509,11 @@ function showToast(message) {
     }, 4000);
 }
 
-
 // Close modals when clicking outside
 window.onclick = function(event) {
     const loginModal = document.getElementById('loginModal');
     const reservationModal = document.getElementById('reservationModal');
+    const myReservationsModal = document.getElementById('myReservationsModal');
     
     if (event.target === loginModal) {
         closeLoginModal();
@@ -377,10 +521,13 @@ window.onclick = function(event) {
     if (event.target === reservationModal) {
         closeReservationModal();
     }
+    if (event.target === myReservationsModal) {
+        closeMyReservationsModal();
+    }
 };
 
 // Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^=\"#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
