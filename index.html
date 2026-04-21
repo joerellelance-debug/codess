@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
 </head>
 <body>
     <!-- Navigation -->
@@ -22,6 +23,9 @@
                 <a href="#home">Home</a>
                 <a href="#offers">Our Offers</a>
                 <a href="#inquiry">Inquiries</a>
+                <button class="btn-my-reservations" id="btnMyReservations" onclick="openMyReservationsModal()" style="display: none;">
+                    <i class="fas fa-list-alt"></i> My Reservations
+                </button>
                 <button class="btn-reservation" onclick="openReservationModal()">
                     <i class="fas fa-calendar-alt"></i> Reservation
                 </button>
@@ -219,15 +223,15 @@
                     <form id="inquiryForm" class="inquiry-form">
                         <div class="form-group">
                             <label for="inquiryName">Full Name</label>
-                            <input type="text" id="inquiryName" name="name" required placeholder="">
+                            <input type="text" id="inquiryName" name="name" required placeholder="John Doe">
                         </div>
                         <div class="form-group">
                             <label for="inquiryEmail">Email Address</label>
-                            <input type="email" id="inquiryEmail" name="email" required placeholder="">
+                            <input type="email" id="inquiryEmail" name="email" required placeholder="john@example.com">
                         </div>
                         <div class="form-group">
                             <label for="inquiryPhone">Phone Number</label>
-                            <input type="tel" id="inquiryPhone" name="phone" placeholder="">
+                            <input type="tel" id="inquiryPhone" name="phone" placeholder="(555) 123-4567">
                         </div>
                         <div class="form-group">
                             <label for="inquiryType">Inquiry Type</label>
@@ -281,8 +285,8 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@chillnshakers.com</p>
+                    <p><i class="fas fa-phone"></i> 09914853694</p>
+                    <p><i class="fas fa-envelope"></i> joerellelance@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -433,6 +437,29 @@
         </div>
     </div>
 
- 
+    <!-- My Reservations Modal -->
+    <div id="myReservationsModal" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeMyReservationsModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2><i class="fas fa-list-alt"></i> My Reservations</h2>
+                <p>View your reservation details</p>
+            </div>
+
+            <div id="myReservationsContent" class="reservations-content">
+                <!-- Reservations will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+<script src="javascript-clean.js"></script>
 </body>
 </html>
